@@ -10,15 +10,27 @@ h1{
     font-family: 'Roboto', sans-serif;
 }
 
+#jogo{
+    display: flex;
+    align-items: center;
+    height: 45vh;
+}
+
+#espacamentos{
+    width: 8vh;
+    height: 0.7vh;
+    margin-left: 10vh;
+    margin-top: 20vh;
+    background-color: black;
+}
+
 #digitadas{
-    height: 10vh;
     text-align: center;
 }
 
 #tema{
     text-align: center;
 }
-
 
 #grid{
     display: flex;
