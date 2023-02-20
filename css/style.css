@@ -4,8 +4,6 @@
 
 body{
     margin: 0;
-
-    user-select: none;
 }
 
 h1{
@@ -17,39 +15,50 @@ h1{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 45vh;
+
+    height: 50vh;
 }
 
 #forca{
     position: absolute;
-    width: 45vh;
-    left: 20vh;
-}
 
-#digitadas{
-    text-align: center;
+    width: 45vh;
+
+    left: 20vh;
+    margin-bottom: 6vh;
 }
 
 #tema{
     text-align: center;
 }
 
-#grid{
+#teclado{
+    margin-top: 1vh;
+}
+
+#linha{
     display: flex;
     justify-content: center;
+
     margin-bottom: 2vh;
 }
 
-.grid_intem{
+#linha div{
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 0.28vh black solid;
-    border-radius: 2vh;
-    font-size: 5vh;
-    font-family: 'Roboto', sans-serif;
+
     width: 10vh;
     height: 10vh;
-    margin-left: 5vh;
+    
+    margin-inline: 2.5vh;
+
+    border: 0.28vh black solid;
+    border-radius: 2vh;
+
+    font-size: 5vh;
+    font-family: 'Roboto', sans-serif;
+
     background-color: whitesmoke;
+    cursor: pointer;
 }

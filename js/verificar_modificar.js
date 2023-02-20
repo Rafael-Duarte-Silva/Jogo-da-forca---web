@@ -1,66 +1,99 @@
-let erros = 0;
-let acertos = 0;
-let cont = 0;
+let input = "";
+let input_registro = [];
 
-let digitadas = [];
-let registro = [];
+let input_cont = 0;
+let erros_cont = 0;
+let acertos_cont = 0;
 
-let split = palavra.split('');
-let comparar = "";
-console.log(comparar);
-console.log(split);
+palavra_sorteada = palavra_sorteada.toUpperCase().split('');
+console.log(input);
+console.log(palavra_sorteada);
 
 addEventListener("keypress", function(event){
-    comparar = event.key;
+    input = event.key.toUpperCase();
 
-    if(comparar == " "){
+    if(input == " "){
 
     }
 
-    else if(registro.filter(numero => comparar.includes(numero)) == false){
-        registro[cont] = event.key;
-        cont++;
+    else if(input_registro.filter(numero => input.includes(numero)) == false){
+        input_registro[input_cont] = event.key.toUpperCase();
+        input_cont++;
         
-        if(split.filter(numero => comparar.includes(numero)) == false){
-          digitadas[erros] = event.key;
-          erros++;
-          this.document.getElementById("digitadas").innerText = "Letras digitadas: "+digitadas.toString();
+        if(palavra_sorteada.filter(numero => input.includes(numero)) == false){
+          tecla_errada();
+          erros_cont++;
         }  
 
         else{
-          for(let i=0; i<split.length; i++) {
-            if(comparar[0].includes(split[i]) == true){
-              let modificar = document.getElementById("espacamentos"+i);
+          for(let i=0; i<palavra_sorteada.length; i++) {
+            if(input[0].includes(palavra_sorteada[i]) == true){
+              let modificar = document.getElementById("espacamentos_"+i);
     
-              modificar.innerText = split[i].toUpperCase();
+              modificar.innerText = palavra_sorteada[i];
               modificar.style.marginBottom = "15vh";
-              modificar.style.marginLeft = "2vh";
               modificar.style.backgroundColor = "white";
               modificar.style.fontSize = "8vh";
               modificar.style.fontFamily = "'Roboto Mono', monospace";
-              acertos++;
+              acertos_cont++;
+              tecla_certa();
             }
           }
         }
     }
 
     else{
-        console.log("igual");
+        tecla_repetida();
     }
 
-    console.log(erros);
+    console.log(erros_cont);
 
-    if(erros == 5){
-      this.alert("Você perdeu!");
-    }
-
-    if(acertos == split.length){
+    if(acertos_cont == palavra_sorteada.length){
       this.alert("Você ganhou!");
     }
 
-    if(erros < 6){
-      this.document.getElementById("forca").setAttribute("src", "svg/forca_"+erros+".svg");
-    }
+    else if(erros_cont < 6){
+      this.document.getElementById("forca").setAttribute("src", "svg/forca_"+erros_cont+".svg");
 
-    console.log(digitadas);
+      if(erros_cont == 5){
+        this.alert("Você perdeu!");
+      }
+    }
 })
+
+function tecla_errada(){
+  for(let i=0; i<input_registro.length; i++) {
+    if(input[0].includes(input_registro[i]) == true){
+      let tecla = document.getElementById(input_registro[i].toUpperCase());
+
+      tecla.style.backgroundColor = "black";
+      tecla.style.color = "white";
+    }
+}
+}
+
+function tecla_certa(){
+  for(let i=0; i<input_registro.length; i++) {
+      if(input[0].includes(input_registro[i]) == true){
+        let tecla = document.getElementById(input_registro[i].toUpperCase());
+
+        tecla.style.backgroundColor = "green";
+        tecla.style.color = "white";
+      }
+  }
+}
+
+function tecla_repetida(){
+  for(let i=0; i<input_registro.length; i++) {
+      if(input[0].includes(input_registro[i]) == true){
+        let tecla = document.getElementById(input_registro[i].toUpperCase());
+
+        tecla.animate([
+          { opacity: '0.4' },
+          { opacity: '1' }
+        ], {
+          duration: 400,
+        });
+      }
+  }
+}
