@@ -1,5 +1,5 @@
 for(let i = 0; i < palavra_sorteada.length; i++){
-    let espacamentos = document.createElement('div');
+    let espacamentos = document.createElement('span');
     espacamentos.setAttribute("id", "espacamentos_"+i);
     espacamentos.style.width = "6vh";
     espacamentos.style.height = "0.7vh";

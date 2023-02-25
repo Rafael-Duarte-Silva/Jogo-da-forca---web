@@ -30,12 +30,15 @@ function janela_final(texto){
     janela_button.style.right = "5vh";
     janela_button.style.border = "0.28vh black solid";
     janela_button.style.borderRadius = "0.8vh";
+    janela_button.style.display = "flex";
+    janela_button.style.justifyContent = "center";
+    janela_button.style.alignItems = "center";
     document.getElementById("tela_div").appendChild(janela_button);
 
     let janela_img = document.createElement('img');
     janela_img.setAttribute("id", "janela_img");
     janela_img.setAttribute("src", "icons/recarregar.png");
-    janela_img.style.width = "100%";
+    janela_img.style.width = "110%";
     document.getElementById("janela_button").appendChild(janela_img);
 
     janela_div.animate([
