@@ -2,3 +2,6 @@ https://editor.method.ac/
 https://www.w3schools.com/css/css_grid_item.asp
 https://www.freecodecamp.org/portuguese/news/como-centralizar-tudo-com-css/
 https://www.flaticon.com/search?word=hangman+game
+
+https://developer.mozilla.org/pt-BR/docs/Learn/CSS/CSS_layout/Responsive_Design
+https://www.escafort.com.br/escadasdefibra--/html/acentuacao-caracteres-especiais/index.htm

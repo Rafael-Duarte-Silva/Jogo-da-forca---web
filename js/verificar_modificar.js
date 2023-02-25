@@ -1,99 +1,76 @@
 let input = "";
 let input_registro = [];
+let caracteres_validos = "ABCDEFGHIJKLMNOPQRSTUVWXYZÁÂÉÍÕÚÇÃÀÊÓÔÜ".toUpperCase().split('');
 
 let input_cont = 0;
 let erros_cont = 0;
 let acertos_cont = 0;
 
-palavra_sorteada = palavra_sorteada.toUpperCase().split('');
+let p_s_padrao = palavra_sorteada.toUpperCase().split('');
+palavra_sorteada = palavra_sorteada.toUpperCase().normalize("NFD").replace(/[^a-zA-Z\s]/g, "").split('');
 console.log(input);
 console.log(palavra_sorteada);
 
+let terminou = false;
+
+function teclado(letra){
+  verificar(letra);
+}
+
 addEventListener("keypress", function(event){
-    input = event.key.toUpperCase();
+  verificar(event.key.toUpperCase().normalize("NFD").replace(/[^a-zA-Z\s]/g, ""));  
+})
 
-    if(input == " "){
-
-    }
-
-    else if(input_registro.filter(numero => input.includes(numero)) == false){
-        input_registro[input_cont] = event.key.toUpperCase();
-        input_cont++;
-        
-        if(palavra_sorteada.filter(numero => input.includes(numero)) == false){
-          tecla_errada();
-          erros_cont++;
-        }  
-
-        else{
-          for(let i=0; i<palavra_sorteada.length; i++) {
-            if(input[0].includes(palavra_sorteada[i]) == true){
-              let modificar = document.getElementById("espacamentos_"+i);
+function verificar(letra){
+  if(terminou == false){
+    input = letra;
     
-              modificar.innerText = palavra_sorteada[i];
-              modificar.style.marginBottom = "15vh";
-              modificar.style.backgroundColor = "white";
-              modificar.style.fontSize = "8vh";
-              modificar.style.fontFamily = "'Roboto Mono', monospace";
-              acertos_cont++;
-              tecla_certa();
+    if(caracteres_validos.filter(numero => input.includes(numero)) != false){
+
+       if(input_registro.filter(numero => input.includes(numero)) == false){
+          input_registro[input_cont] = input;
+          input_cont++;
+
+          if(palavra_sorteada.filter(numero => input.includes(numero)) == false){
+            tecla("black");
+            erros_cont++;
+          }  
+
+          else{
+            for(let i=0; i<palavra_sorteada.length; i++) {
+              if(input[0].includes(palavra_sorteada[i]) == true){
+                let modificar = document.getElementById("espacamentos_"+i);
+                modificar.innerText = p_s_padrao[i];
+                modificar.style.marginBottom = "15vh";
+                modificar.style.backgroundColor = "white";
+                modificar.style.fontSize = "8vh";
+                modificar.style.fontFamily = "'Roboto Mono', monospace";
+                acertos_cont++;
+                tecla("green");
+              }
             }
           }
         }
-    }
 
-    else{
-        tecla_repetida();
-    }
-
-    console.log(erros_cont);
-
-    if(acertos_cont == palavra_sorteada.length){
-      this.alert("Você ganhou!");
-    }
-
-    else if(erros_cont < 6){
-      this.document.getElementById("forca").setAttribute("src", "svg/forca_"+erros_cont+".svg");
-
-      if(erros_cont == 5){
-        this.alert("Você perdeu!");
+      else{
+          tecla_repetida();
       }
-    }
-})
 
-function tecla_errada(){
-  for(let i=0; i<input_registro.length; i++) {
-    if(input[0].includes(input_registro[i]) == true){
-      let tecla = document.getElementById(input_registro[i].toUpperCase());
+      console.log(erros_cont);
 
-      tecla.style.backgroundColor = "black";
-      tecla.style.color = "white";
-    }
-}
-}
-
-function tecla_certa(){
-  for(let i=0; i<input_registro.length; i++) {
-      if(input[0].includes(input_registro[i]) == true){
-        let tecla = document.getElementById(input_registro[i].toUpperCase());
-
-        tecla.style.backgroundColor = "green";
-        tecla.style.color = "white";
+      if(acertos_cont == palavra_sorteada.length){
+        janela_final("Você Ganhou!");
+        terminou = true;
       }
-  }
-}
 
-function tecla_repetida(){
-  for(let i=0; i<input_registro.length; i++) {
-      if(input[0].includes(input_registro[i]) == true){
-        let tecla = document.getElementById(input_registro[i].toUpperCase());
+      else if(erros_cont < 6){
+        this.document.getElementById("forca").setAttribute("src", "svg/forca_"+erros_cont+".svg");
 
-        tecla.animate([
-          { opacity: '0.4' },
-          { opacity: '1' }
-        ], {
-          duration: 400,
-        });
+        if(erros_cont == 5){
+          janela_final("Você Perdeu!");
+          terminou = true;
+        }
       }
+    }   
   }
 }
