@@ -68,6 +68,14 @@ function verificar(letra){
 
         if(erros_cont == 5){
           janela_final("Você Perdeu!");
+          for(let i=0; i<palavra_sorteada.length; i++) {
+            let modificar = document.getElementById("espacamentos_"+i);
+            modificar.innerText = p_s_padrao[i];
+            modificar.style.marginBottom = "15vh";
+            modificar.style.backgroundColor = "white";
+            modificar.style.fontSize = "8vh";
+            modificar.style.fontFamily = "'Roboto Mono', monospace";
+          }
           terminou = true;
         }
       }
