@@ -6,5 +6,8 @@ for(let i = 0; i < palavra_sorteada.length; i++){
     espacamentos.style.marginInline = "1vh";
     espacamentos.style.marginTop = "10vh";
     espacamentos.style.backgroundColor = "black";
+    espacamentos.style.display = "flex";
+    espacamentos.style.alignItems = "center";
+    espacamentos.style.justifyContent = "center";
     document.getElementById("jogo").appendChild(espacamentos);
   }

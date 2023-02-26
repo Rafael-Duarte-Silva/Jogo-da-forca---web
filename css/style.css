@@ -39,14 +39,14 @@ h1{
     user-select: none;
 }
 
-#linha{
+#teclado_linha{
     display: flex;
     justify-content: center;
 
     margin-top: 2vh;
 }
 
-#linha div{
+#teclado_linha div{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -66,14 +66,34 @@ h1{
     cursor: pointer;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 200px) {
+
+    #forca{
+        left: -50vh;
+        width: 55vh;
+    }
+
+    #teclado_linha div{
+        margin-inline: 0.3vh;
+        width: 3.5vh;
+        height: 5vh;
+        border-radius: 1.5vh;
+        font-size: 3vh;
+    }
+
+    #jogo{
+        transform: scale(0.3);
+    }
+  }
+
+@media screen and (min-width: 200px) {
 
     #forca{
         left: -20vh;
         width: 35vh;
     }
 
-    #linha div{
+    #teclado_linha div{
         margin-inline: 0.3vh;
         width: 3.5vh;
         height: 5vh;
@@ -93,7 +113,7 @@ h1{
         width: 35vh;
     }
 
-    #linha div{
+    #teclado_linha div{
         margin-inline: 0.4vh;
         width: 4vh;
         height: 7vh;
@@ -113,7 +133,7 @@ h1{
         width: 35vh;
     }
 
-    #linha div{
+    #teclado_linha div{
         margin-inline: 0.6vh;
         width: 5.5vh;
         height: 8.5vh;
@@ -133,7 +153,7 @@ h1{
         width: 35vh;
     }
 
-    #linha div{
+    #teclado_linha div{
         margin-inline: 1.5vh;
         width: 7vh;
         height: 9vh;
@@ -153,7 +173,7 @@ h1{
         width: 40vh;
     }
 
-    #linha div{
+    #teclado_linha div{
         margin-inline: 1.5vh;
         width: 9.5vh;
         height: 9.5vh;
@@ -173,7 +193,7 @@ h1{
         width: 45vh;
     }
 
-    #linha div{
+    #teclado_linha div{
         margin-inline: 2.5vh;
         width: 10vh;
         height: 10vh;
@@ -193,7 +213,7 @@ h1{
         width: 45vh;
     }
 
-    #linha div{
+    #teclado_linha div{
         margin-inline: 2.5vh;
         width: 12vh;
         height: 10vh;
@@ -213,7 +233,7 @@ h1{
         width: 45vh;
     }
 
-    #linha div{
+    #teclado_linha div{
         margin-inline: 3.5vh;
         width: 13vh;
         height: 10vh;

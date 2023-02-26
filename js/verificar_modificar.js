@@ -6,8 +6,9 @@ let input_cont = 0;
 let erros_cont = 0;
 let acertos_cont = 0;
 
-let p_s_padrao = palavra_sorteada.toUpperCase().split('');
+let palavra_sorteada_padrao = palavra_sorteada.toUpperCase().split('');
 palavra_sorteada = palavra_sorteada.toUpperCase().normalize("NFD").replace(/[^a-zA-Z\s]/g, "").split('');
+
 console.log(input);
 console.log(palavra_sorteada);
 
@@ -32,7 +33,8 @@ function verificar(letra){
           input_cont++;
 
           if(palavra_sorteada.filter(numero => input.includes(numero)) == false){
-            tecla("black");
+            tecla_cor("black");
+
             erros_cont++;
           }  
 
@@ -40,15 +42,19 @@ function verificar(letra){
             for(let i=0; i<palavra_sorteada.length; i++) {
               if(input[0].includes(palavra_sorteada[i]) == true){
                 let modificar = document.getElementById("espacamentos_"+i);
-                modificar.innerText = p_s_padrao[i];
+                modificar.innerText = palavra_sorteada_padrao[i];
                 modificar.style.marginBottom = "15vh";
                 modificar.style.backgroundColor = "white";
                 modificar.style.fontSize = "8vh";
                 modificar.style.fontFamily = "'Roboto Mono', monospace";
+
+                tecla_cor("green");
+
                 acertos_cont++;
-                tecla("green");
               }
             }
+
+            redimensionar();
           }
         }
 
@@ -68,14 +74,16 @@ function verificar(letra){
 
         if(erros_cont == 5){
           janela_final("Você Perdeu!");
+
           for(let i=0; i<palavra_sorteada.length; i++) {
             let modificar = document.getElementById("espacamentos_"+i);
-            modificar.innerText = p_s_padrao[i];
+            modificar.innerText = palavra_sorteada_padrao[i];
             modificar.style.marginBottom = "15vh";
             modificar.style.backgroundColor = "white";
             modificar.style.fontSize = "8vh";
             modificar.style.fontFamily = "'Roboto Mono', monospace";
           }
+          
           terminou = true;
         }
       }
