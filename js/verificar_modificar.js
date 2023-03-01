@@ -50,11 +50,11 @@ function verificar(letra){
 
                 tecla_cor("green");
 
+                redimensionar(i);
+
                 acertos_cont++;
               }
             }
-
-            redimensionar();
           }
         }
 
@@ -82,6 +82,8 @@ function verificar(letra){
             modificar.style.backgroundColor = "white";
             modificar.style.fontSize = "8vh";
             modificar.style.fontFamily = "'Roboto Mono', monospace";
+
+            redimensionar(i);
           }
           
           terminou = true;

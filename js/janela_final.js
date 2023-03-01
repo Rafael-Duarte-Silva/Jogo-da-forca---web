@@ -19,6 +19,7 @@ function janela_final(texto){
     let janela_h1 = document.createElement('h1');
     janela_h1.innerText = texto;
     janela_h1.setAttribute("id", "tela_h1");
+    janela_h1.style.fontSize = "5vh";
     document.getElementById("tela_div").appendChild(janela_h1);
 
     let janela_button = document.createElement('button');
