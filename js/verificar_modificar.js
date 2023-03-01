@@ -9,9 +9,6 @@ let acertos_cont = 0;
 let palavra_sorteada_padrao = palavra_sorteada.toUpperCase().split('');
 palavra_sorteada = palavra_sorteada.toUpperCase().normalize("NFD").replace(/[^a-zA-Z\s]/g, "").split('');
 
-console.log(input);
-console.log(palavra_sorteada);
-
 let terminou = false;
 
 function teclado(letra){
@@ -61,8 +58,6 @@ function verificar(letra){
       else{
           tecla_repetida();
       }
-
-      console.log(erros_cont);
 
       if(acertos_cont == palavra_sorteada.length){
         janela_final("Você Ganhou!");
